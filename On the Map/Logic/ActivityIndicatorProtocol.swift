@@ -16,22 +16,24 @@ protocol ActivityIndicator {
 }
 
 
-// MARK: - Activity indicator protocol extension used to define default behaviour of the protocol
+// MARK: - Activity indicator protocol extension used to define default behavior of the protocol
 extension ActivityIndicator where Self: UIViewController {
     
     func showIndicator() {
-        configureSpinner()
         spinner.startAnimating()
     }
     
     func hideIndicator() {
-        spinner.stopAnimating()
+        updateUI {
+            self.spinner.stopAnimating()
+        }
     }
     
-    fileprivate func configureSpinner() {
+    func configureSpinner() {
         spinner.color = .white
         spinner.hidesWhenStopped = true
         spinner.center = view.center
         view.addSubview(spinner)
     }
+
 }

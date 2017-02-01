@@ -10,7 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, ActivityIndicator {
 
-    let api = API()
+    fileprivate let api = API()
+    
     var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
     
     @IBOutlet fileprivate weak var loginButton: UIButton! {
@@ -20,6 +21,13 @@ class ViewController: UIViewController, ActivityIndicator {
             loginButton.titleLabel?.font = UIFont(name: "Roboto-Medium.ttf", size: 20.0)
             loginButton.setTitleColor(.white, for: .normal)
             loginButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
+        }
+    }
+    
+    @IBOutlet fileprivate weak var signUpButton: UIButton! {
+        didSet {
+            signUpButton.titleLabel?.font = UIFont(name: "Roboto-Medium.ttf", size: 20.0)
+            signUpButton.addTarget(self, action: #selector(signUpAction), for: .touchUpInside)
         }
     }
     
@@ -42,11 +50,12 @@ class ViewController: UIViewController, ActivityIndicator {
             passwordTextField.text = "ogaitnas910112"
         }
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSpinner()
-        view.backgroundColor = Constants.Colors.UdacityOrange
+//        view.backgroundColor = Constants.Colors.UdacityOrange
     }
     
     @objc fileprivate func loginAction() {
@@ -72,6 +81,10 @@ class ViewController: UIViewController, ActivityIndicator {
                 })
             }
         }
+    }
+    
+    @objc fileprivate func signUpAction() {
+        UIApplication.shared.open(URL(string: Constants.Udacity.SignUpURL)!, options: [:], completionHandler: nil)
     }
 }
 

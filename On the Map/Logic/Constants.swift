@@ -16,6 +16,7 @@ struct Constants {
         static let ApiScheme = "https://"
         static let ApiHost = "www.udaciy.com/api"
         static let ApiLoginPath = "/session"
+        static let SignUpURL = "https://www.udacity.com/account/auth#!/signup"
     }
     
     struct UdacityParseAPI {
@@ -71,5 +72,10 @@ struct Constants {
         static let UdacityOrange = UIColor(red: 255/255, green: 105/255, blue: 0/255, alpha: 1)
         static let UdacityOrangeButton = UIColor(red: 229/255, green: 83/255, blue: 0/255, alpha: 1)
         static let UdacityOrange60 =  Constants.Colors.UdacityOrange.withAlphaComponent(-1.0)
+    }
+    
+    // MARK: Segues
+    struct SegueIds {
+        static let mapViewSegue = "ShowPins"
     }
 }

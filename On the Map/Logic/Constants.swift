@@ -78,4 +78,8 @@ struct Constants {
     struct SegueIds {
         static let mapViewSegue = "ShowPins"
     }
+    
+    enum Copies: String {
+        case Logout
+    }
 }

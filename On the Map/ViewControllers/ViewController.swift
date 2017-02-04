@@ -59,12 +59,13 @@ class ViewController: UIViewController, ActivityIndicator {
     }
     
     @objc fileprivate func loginAction() {
+        updateLoginButtonState()
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         if !Validator.validateEmail(email) {
-            print(email)
+            updateLoginButtonState()
         } else if password.isEmpty {
-            print(password)
+            updateLoginButtonState()
         } else {
             showIndicator()
             let parameters = ["udacity": ["username": email, "password": password]]
@@ -72,12 +73,17 @@ class ViewController: UIViewController, ActivityIndicator {
                 guard let strongSelf = self else { print("hp");return }
                 strongSelf.api.udacityLogin(parameters: parameters, success: { data in
                     let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    print(json)
                     strongSelf.hideIndicator()
+                    updateUI {
+                        strongSelf.performSegue(withIdentifier: Constants.SegueIds.mapViewSegue, sender: nil)
+                    }
                     }, failure: { error in
                         guard let strongSelf = self else { return }
                         print(error)
                         strongSelf.hideIndicator()
+                        updateUI {
+                            strongSelf.updateLoginButtonState()
+                        }
                 })
             }
         }
@@ -85,6 +91,10 @@ class ViewController: UIViewController, ActivityIndicator {
     
     @objc fileprivate func signUpAction() {
         UIApplication.shared.open(URL(string: Constants.Udacity.SignUpURL)!, options: [:], completionHandler: nil)
+    }
+    
+    fileprivate func updateLoginButtonState() {
+        loginButton.isEnabled = !loginButton.isEnabled
     }
 }
 

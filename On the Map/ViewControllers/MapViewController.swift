@@ -17,6 +17,9 @@ class MapViewController: UIViewController, ActivityIndicator {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureButtons()
+        dispatchOnBackground {
+            ParseAPI().getStudentsLocations()
+        }
     }
     
     fileprivate func configureButtons() {

@@ -20,12 +20,12 @@ struct Constants {
     }
     
     struct UdacityParseAPI {
-        
-        private static let baseURL = "https://parse.udacity.com/parse/classes"
-        
+        static let baseURL = "https://parse.udacity.com/parse/classes"
+        static let studentLocationEndpoint = baseURL + "/StudentLocation"
         
         struct Keys {
-            
+            static let parseApplicationId = "X-Parse-Application-Id"
+            static let parseRestAPIKey = "X-Parse-REST-API-Key"
         }
         
         struct Values {
@@ -63,8 +63,12 @@ struct Constants {
     }
     
     struct Error {
-        static let RequestFailed = "The request failed, try again"
+        static let RequestFailed = "The request failed, try again."
+        static let Title = "Error"
+        static let InvalidCredentials = "Wrong email or password."
         static let NoData = "No data was returned by the request!"
+        static let InvalidEmail = "Please enter a valid email address."
+        static let NoPassword = "Please enter your password."
     }
     
     // MARK: UI
@@ -81,5 +85,6 @@ struct Constants {
     
     enum Copies: String {
         case Logout
+        case Close
     }
 }

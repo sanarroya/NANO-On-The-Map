@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D21727F71E42B64700D1D036 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21727F61E42B64700D1D036 /* MapViewController.swift */; };
 		D21727F91E42C76800D1D036 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21727F81E42C76800D1D036 /* ListViewController.swift */; };
-		D25C3A2D1E1CAD1A00F02E71 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25C3A2C1E1CAD1A00F02E71 /* HTTPMethod.swift */; };
+		D25C3A2D1E1CAD1A00F02E71 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25C3A2C1E1CAD1A00F02E71 /* APIHelper.swift */; };
 		D25C3A2F1E1CB3E400F02E71 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25C3A2E1E1CB3E400F02E71 /* GCDBlackBox.swift */; };
 		D9F0D0721DA074DE004DF3BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0D0711DA074DE004DF3BE /* AppDelegate.swift */; };
 		D9F0D0771DA074DE004DF3BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F0D0751DA074DE004DF3BE /* Main.storyboard */; };
@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		D21727F61E42B64700D1D036 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D21727F81E42C76800D1D036 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		D25C3A2C1E1CAD1A00F02E71 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		D25C3A2C1E1CAD1A00F02E71 /* APIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		D25C3A2E1E1CB3E400F02E71 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		D9F0D06E1DA074DE004DF3BE /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F0D0711DA074DE004DF3BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 			children = (
 				D9F0D0841DA07592004DF3BE /* UdacityAPI.swift */,
 				D9F0D0861DA075A7004DF3BE /* UdacityParseAPI.swift */,
-				D25C3A2C1E1CAD1A00F02E71 /* HTTPMethod.swift */,
+				D25C3A2C1E1CAD1A00F02E71 /* APIHelper.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -237,7 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D25C3A2D1E1CAD1A00F02E71 /* HTTPMethod.swift in Sources */,
+				D25C3A2D1E1CAD1A00F02E71 /* APIHelper.swift in Sources */,
 				D9F0D0871DA075A7004DF3BE /* UdacityParseAPI.swift in Sources */,
 				D9F0D0A01DA1C7AC004DF3BE /* Validator.swift in Sources */,
 				D9F0D0721DA074DE004DF3BE /* AppDelegate.swift in Sources */,

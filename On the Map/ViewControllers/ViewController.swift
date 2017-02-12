@@ -64,25 +64,27 @@ class ViewController: UIViewController, ActivityIndicator {
         let password = passwordTextField.text ?? ""
         if !Validator.validateEmail(email) {
             updateLoginButtonState()
+            showAlert(withError: Constants.Error.InvalidEmail)
         } else if password.isEmpty {
             updateLoginButtonState()
+            showAlert(withError: Constants.Error.NoPassword)
         } else {
             showIndicator()
             let parameters = ["udacity": ["username": email, "password": password]]
             dispatchOnBackground { [weak self] void in
                 guard let strongSelf = self else { print("hp");return }
                 strongSelf.api.udacityLogin(parameters: parameters, success: { data in
-                    let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     strongSelf.hideIndicator()
                     updateUI {
+                        strongSelf.updateLoginButtonState()
                         strongSelf.performSegue(withIdentifier: Constants.SegueIds.mapViewSegue, sender: nil)
                     }
                     }, failure: { error in
                         guard let strongSelf = self else { return }
-                        print(error)
                         strongSelf.hideIndicator()
                         updateUI {
                             strongSelf.updateLoginButtonState()
+                            strongSelf.showAlert(withError: error)
                         }
                 })
             }
@@ -95,6 +97,14 @@ class ViewController: UIViewController, ActivityIndicator {
     
     fileprivate func updateLoginButtonState() {
         loginButton.isEnabled = !loginButton.isEnabled
+        loginButton.alpha = loginButton.isEnabled ? 1.0 : 0.3
+    }
+    
+    fileprivate func showAlert(withError error: String) {
+        let alert = UIAlertController(title: Constants.Error.Title, message: error, preferredStyle: .alert)
+        let closeAction = UIAlertAction(title: Constants.Copies.Close.rawValue, style: .default, handler: nil)
+        alert.addAction(closeAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 

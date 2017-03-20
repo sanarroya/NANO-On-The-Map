@@ -34,7 +34,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcT-JY-HGM">
-                                <rect key="frame" x="114.5" y="222" width="146.5" height="23.5"/>
+                                <rect key="frame" x="114" y="222" width="147.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                 <color key="textColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -118,7 +118,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N0Q-EO-69c" id="pnQ-hM-PeX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -159,6 +159,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="S65-s8-9Wk"/>
+                    <connections>
+                        <outlet property="mapView" destination="kyJ-JP-7D2" id="4KT-Wz-XDE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kek-JI-Gbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -188,7 +191,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="71N-Li-Zab" customClass="OTMNavigationViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="Gh2-bA-SNG"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="J3E-Qf-XN3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J3E-Qf-XN3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -207,7 +210,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7th-cb-FDe" customClass="OTMNavigationViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="List" image="list" id="fLO-a9-ZQf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Apv-5D-o82">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Apv-5D-o82">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -11,16 +11,14 @@ import Foundation
 struct ParseAPI: APIHelperProtocol {
     var sharedSession = URLSession.shared
 
-    func getStudentsLocations() {
+    func getStudentsLocations(success: @escaping ([StudentInformation]) -> (), failure: @escaping (String) -> ()) {
         let request = NSMutableURLRequest(url: URL(string: Constants.UdacityParseAPI.studentLocationEndpoint)!)
         addHeadersTo(request: request)
         requestAPI(withURLRequest: request as URLRequest, success: { data in
             let params = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-            let jsonData = try! JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
-            let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
-            print(jsonString)
+            success(self.parseStudentsLocationResponse(params as! [String : Any]))
         }) { error in
-            print(error)
+            failure(error)
         }
     }
     
@@ -64,5 +62,15 @@ struct ParseAPI: APIHelperProtocol {
         request.addValue(Constants.UdacityParseAPI.Values.apiKey,
                          forHTTPHeaderField: Constants.UdacityParseAPI.Keys.parseRestAPIKey)
 
+    }
+    
+    fileprivate func parseStudentsLocationResponse(_ params: [String : Any]) -> [StudentInformation] {
+        var studentInformation = [StudentInformation]()
+        let students = params["results"] as! [[String : Any]]
+        for student in students {
+            studentInformation.append(StudentInformation(fromDictionary: student))
+        }
+        
+        return studentInformation
     }
 }

@@ -55,7 +55,6 @@ class ViewController: UIViewController, ActivityIndicator {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSpinner()
-//        view.backgroundColor = Constants.Colors.UdacityOrange
     }
     
     @objc fileprivate func loginAction() {
@@ -77,6 +76,7 @@ class ViewController: UIViewController, ActivityIndicator {
                     strongSelf.hideIndicator()
                     updateUI {
                         strongSelf.updateLoginButtonState()
+                        strongSelf.clearFields()
                         strongSelf.performSegue(withIdentifier: Constants.SegueIds.mapViewSegue, sender: nil)
                     }
                     }, failure: { error in
@@ -106,5 +106,9 @@ class ViewController: UIViewController, ActivityIndicator {
         alert.addAction(closeAction)
         present(alert, animated: true, completion: nil)
     }
+    
+    fileprivate func clearFields() {
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
 }
-

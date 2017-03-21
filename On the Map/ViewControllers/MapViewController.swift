@@ -83,7 +83,16 @@ extension MapViewController: MKMapViewDelegate {
             }
             return view
         }
-        
         return nil
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard let annotation = view.annotation, var urlString = annotation.subtitle ?? nil else { return }
+        if !(urlString.contains(Constants.Udacity.ApiScheme)) || !(urlString.contains(Constants.Udacity.CommonApiScheme)) {
+            urlString = Constants.Udacity.CommonApiScheme + urlString
+        }
+        if let url = URL(string: urlString) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
 }

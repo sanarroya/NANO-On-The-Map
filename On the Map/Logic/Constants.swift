@@ -14,6 +14,7 @@ struct Constants {
     // MARK: TMDB
     struct Udacity {
         static let ApiScheme = "https://"
+        static let CommonApiScheme = "http://"
         static let ApiHost = "www.udaciy.com/api"
         static let ApiLoginPath = "/session"
         static let SignUpURL = "https://www.udacity.com/account/auth#!/signup"

@@ -12,10 +12,12 @@ import MapKit
 class StudentAnnotation: NSObject, MKAnnotation {
     
     var title: String?
+    var subtitle: String?
     var coordinate: CLLocationCoordinate2D
     
     init(withStudent student: StudentInformation) {
         self.title = student.fullName
+        self.subtitle = student.mediaURL
         self.coordinate = student.coordinate
     }
 }

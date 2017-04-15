@@ -15,21 +15,34 @@ struct Constants {
     struct Udacity {
         static let apiScheme = "https://"
         static let commonApiScheme = "http://"
-        static let apiHost = "www.udaciy.com/api"
+        static let apiHost = "www.udacity.com/api"
         static let apiLoginPath = "/session"
         static let signUpURL = "https://www.udacity.com/account/auth#!/signup"
+        static let loginEndpoint = apiScheme + apiHost + apiLoginPath
+        
+        struct Key {
+            static let accept = "Accept"
+            static let contentType = "Content-Type"
+            static let udacity = "udacity"
+            static let username = "username"
+            static let password = "password"
+        }
+        
+        struct Value {
+            static let applicationJSON = "application/json"
+        }
     }
     
     struct UdacityParseAPI {
         static let baseURL = "https://parse.udacity.com/parse/classes"
         static let studentLocationEndpoint = baseURL + "/StudentLocation"
         
-        struct Keys {
+        struct Key {
             static let parseApplicationId = "X-Parse-Application-Id"
             static let parseRestAPIKey = "X-Parse-REST-API-Key"
         }
         
-        struct Values {
+        struct Value {
             static let applicationID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
             static let apiKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
         }
@@ -53,13 +66,16 @@ struct Constants {
     // MARK: Segues
     struct SegueIds {
         static let mapViewSegue = "ShowPins"
+        static let addLocationSegue = "AddLocation"
     }
     
-    enum Copy: String {
-        case login = "Login"
-        case logout = "Logout"
-        case close = "Close"
-        case noAccount = "Don't have an account? "
-        case signUp = "Sign Up"
+    struct Copy {
+        static let login = "LOGIN"
+        static let logout = "Logout"
+        static let close = "Close"
+        static let noAccount = "Don't have an account? "
+        static let signUp = "Sign Up"
+        static let cancel = "Cancel"
+        static let findLocation = "FIND LOCATION"
     }
 }

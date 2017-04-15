@@ -26,7 +26,6 @@ struct ParseAPI: APIHelperProtocol {
         let request = NSMutableURLRequest(url: URL(string: Constants.UdacityParseAPI.studentLocationEndpoint)!)
         addHeadersTo(request: request)
         request.httpMethod = HTTPMethod.POST.rawValue
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.386052, \"longitude\": -122.083851}".data(using: String.Encoding.utf8)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
@@ -57,11 +56,9 @@ struct ParseAPI: APIHelperProtocol {
     }
     
     fileprivate func addHeadersTo(request: NSMutableURLRequest) {
-        request.addValue(Constants.UdacityParseAPI.Values.applicationID,
-                         forHTTPHeaderField: Constants.UdacityParseAPI.Keys.parseApplicationId)
-        request.addValue(Constants.UdacityParseAPI.Values.apiKey,
-                         forHTTPHeaderField: Constants.UdacityParseAPI.Keys.parseRestAPIKey)
-
+        request.addValue(Constants.UdacityParseAPI.Value.applicationID, forHTTPHeaderField: Constants.UdacityParseAPI.Key.parseApplicationId)
+        request.addValue(Constants.UdacityParseAPI.Value.apiKey, forHTTPHeaderField: Constants.UdacityParseAPI.Key.parseRestAPIKey)
+        request.addValue(Constants.Udacity.Value.applicationJSON, forHTTPHeaderField: Constants.Udacity.Key.contentType)
     }
     
     fileprivate func parseStudentsLocationResponse(_ params: [String : Any]) -> [StudentInformation] {

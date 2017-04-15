@@ -16,15 +16,21 @@ class ListViewController: UITableViewController, ActivityIndicator {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         configureSpinner()
         configureButtons()
         fetchStudents()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchStudents()
+    }
 
     fileprivate func configureButtons() {
-        let logoutButton = UIBarButtonItem(title: Constants.Copy.logout.rawValue, style: .plain, target: self, action: #selector(logout))
+        let logoutButton = UIBarButtonItem(title: Constants.Copy.logout, style: .plain, target: self, action: #selector(logout))
         logoutButton.setTitleTextAttributes([NSFontAttributeName: Appearance.Font.mediumRoboto(withSize: 16)], for: .normal)
-        let pinButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_addpin"), style: .plain, target: self, action: #selector(location))
+        let pinButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_addpin"), style: .plain, target: self, action: #selector(addLocation))
         let refreshButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_refresh"), style: .plain, target: self, action: #selector(refresh))
         navigationItem.leftBarButtonItem = logoutButton
         navigationItem.rightBarButtonItems = [pinButton, refreshButton]
@@ -39,8 +45,8 @@ class ListViewController: UITableViewController, ActivityIndicator {
         fetchStudents()
     }
     
-    func location() {
-        
+    func addLocation() {
+        performSegue(withIdentifier: Constants.SegueIds.addLocationSegue, sender: nil)
     }
     
     // MARK: - Table view data source

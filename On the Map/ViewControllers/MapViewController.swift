@@ -20,13 +20,17 @@ class MapViewController: UIViewController, ActivityIndicator {
         super.viewDidLoad()
         mapView.delegate = self
         configureButtons()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchStudents()
     }
     
     fileprivate func configureButtons() {
-        let logoutButton = UIBarButtonItem(title: Constants.Copy.logout.rawValue, style: .plain, target: self, action: #selector(logout))
+        let logoutButton = UIBarButtonItem(title: Constants.Copy.logout, style: .plain, target: self, action: #selector(logout))
         logoutButton.setTitleTextAttributes([NSFontAttributeName: Appearance.Font.mediumRoboto(withSize: 16)], for: .normal)
-        let pinButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_addpin"), style: .plain, target: self, action: #selector(location))
+        let pinButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_addpin"), style: .plain, target: self, action: #selector(addLocation))
         let refreshButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_refresh"), style: .plain, target: self, action: #selector(refresh))
         navigationItem.leftBarButtonItem = logoutButton
         navigationItem.rightBarButtonItems = [pinButton, refreshButton]
@@ -42,7 +46,8 @@ class MapViewController: UIViewController, ActivityIndicator {
         fetchStudents()
     }
     
-    func location() {
+    func addLocation() {
+        performSegue(withIdentifier: Constants.SegueIds.addLocationSegue, sender: nil)
     }
     
     fileprivate func configureAnnotations(withStudents students: [StudentInformation]) -> [StudentAnnotation] {

@@ -96,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
+            <point key="canvasLocation" x="-2" y="36"/>
         </scene>
         <!--On The Map-->
         <scene sceneID="kxL-re-2YV">
@@ -138,6 +138,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On The Map" id="0go-rV-KQg"/>
+                    <connections>
+                        <segue destination="fTS-if-X7B" kind="presentation" identifier="AddLocation" id="4GX-Pf-Cx0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vrm-1e-fFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -170,6 +173,7 @@
                     <navigationItem key="navigationItem" title="On The Map" id="S65-s8-9Wk"/>
                     <connections>
                         <outlet property="mapView" destination="kyJ-JP-7D2" id="4KT-Wz-XDE"/>
+                        <segue destination="fTS-if-X7B" kind="presentation" identifier="AddLocation" id="js8-LE-Te1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kek-JI-Gbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -236,10 +240,105 @@
             </objects>
             <point key="canvasLocation" x="1728.8" y="364.7676161919041"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1cZ-Is-oYe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fTS-if-X7B" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hPR-qN-p7w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bYg-uh-OiL" kind="relationship" relationship="rootViewController" id="JY6-DH-7Rr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qRT-3W-DJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3432.8000000000002" y="92.203898050974516"/>
+        </scene>
+        <!--Add Location-->
+        <scene sceneID="I99-4r-zpN">
+            <objects>
+                <viewController id="bYg-uh-OiL" customClass="AddLocationViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0pC-ds-rQv"/>
+                        <viewControllerLayoutGuide type="bottom" id="qbI-Ko-VmU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QZW-ra-xxN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="FUz-mO-ga7">
+                                <rect key="frame" x="134" y="74" width="107" height="124"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="9IA-el-Zra"/>
+                                    <constraint firstAttribute="height" constant="124" id="leN-Ny-MSa"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter a Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yc2-7e-J2c">
+                                <rect key="frame" x="48" y="208" width="279" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="YoZ-pq-dwd"/>
+                                </constraints>
+                                <color key="textColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter a Website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dSX-1s-5dt">
+                                <rect key="frame" x="48" y="256" width="279" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="qDl-9Q-fR3"/>
+                                </constraints>
+                                <color key="textColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEs-Z1-ptq">
+                                <rect key="frame" x="48" y="312" width="279" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="h7w-2w-T9U"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.0078431372550000003" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="yc2-7e-J2c" firstAttribute="leading" secondItem="QZW-ra-xxN" secondAttribute="leading" constant="48" id="AYG-4U-Nq5"/>
+                            <constraint firstItem="yc2-7e-J2c" firstAttribute="centerX" secondItem="QZW-ra-xxN" secondAttribute="centerX" id="DyT-uY-zov"/>
+                            <constraint firstItem="FUz-mO-ga7" firstAttribute="top" secondItem="0pC-ds-rQv" secondAttribute="bottom" constant="10" id="I28-N9-woi"/>
+                            <constraint firstItem="dSX-1s-5dt" firstAttribute="width" secondItem="yc2-7e-J2c" secondAttribute="width" id="NHt-kA-t5C"/>
+                            <constraint firstItem="dSX-1s-5dt" firstAttribute="leading" secondItem="yc2-7e-J2c" secondAttribute="leading" id="O1N-fY-mLC"/>
+                            <constraint firstItem="MEs-Z1-ptq" firstAttribute="width" secondItem="dSX-1s-5dt" secondAttribute="width" id="YcC-Za-ARm"/>
+                            <constraint firstItem="yc2-7e-J2c" firstAttribute="top" secondItem="FUz-mO-ga7" secondAttribute="bottom" constant="10" id="eRE-LZ-vj9"/>
+                            <constraint firstItem="MEs-Z1-ptq" firstAttribute="top" secondItem="dSX-1s-5dt" secondAttribute="bottom" constant="16" id="eoT-tt-Ye0"/>
+                            <constraint firstItem="dSX-1s-5dt" firstAttribute="top" secondItem="yc2-7e-J2c" secondAttribute="bottom" constant="8" id="hce-Xk-UWK"/>
+                            <constraint firstItem="MEs-Z1-ptq" firstAttribute="centerX" secondItem="QZW-ra-xxN" secondAttribute="centerX" id="y66-hX-fBB"/>
+                            <constraint firstItem="FUz-mO-ga7" firstAttribute="centerX" secondItem="QZW-ra-xxN" secondAttribute="centerX" id="zh1-Ce-9nw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Location" id="Byu-G2-3ea"/>
+                    <connections>
+                        <outlet property="findLocationButton" destination="MEs-Z1-ptq" id="RtQ-Zo-uOH"/>
+                        <outlet property="locationTextField" destination="yc2-7e-J2c" id="Ty5-xk-fpl"/>
+                        <outlet property="websiteTextField" destination="dSX-1s-5dt" id="h0V-5w-KZ0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xv8-db-vRV" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4385" y="92"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
+        <image name="icon_world" width="52" height="67"/>
         <image name="logo-u" width="62" height="62"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="js8-LE-Te1"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -10,7 +10,10 @@ import Foundation
 import UIKit
 
 extension UITextField {
-    func udacityField() {
+    func udacityField(withAutocorrection autocorrection: Bool = false) {
+        autocorrectionType = autocorrection ? UITextAutocorrectionType.yes : UITextAutocorrectionType.no
+        textColor = .lightGray
+        autocapitalizationType = .none
         layer.cornerRadius = 4
         layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 1
@@ -21,8 +24,11 @@ extension UITextField {
 
 extension UIButton {
     func udacityButton() {
-        layer.cornerRadius = 4
+        titleLabel?.font = Appearance.Font.mediumRoboto()
+        setTitleColor(.white, for: .normal)
+        backgroundColor = Appearance.Colors.udacityBlue
         layer.borderColor = Appearance.Colors.udacityBlue.cgColor
+        layer.cornerRadius = 4
         layer.borderWidth = 1
     }
 }

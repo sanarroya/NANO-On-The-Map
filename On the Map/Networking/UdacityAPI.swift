@@ -8,17 +8,15 @@
 import Foundation
 
 struct API: APIHelperProtocol {
-    fileprivate let kLoginEndpoint = "https://www.udacity.com/api/session"
-    fileprivate let kLogoutEndpoint = "https://www.udacity.com/api/session"
     fileprivate let kGetUserDataEndpoint = "https://www.udacity.com/api/users/3903878747"
     
     var sharedSession = URLSession.shared
     
     func udacityLogin(parameters: [String: Any], success: @escaping (Data) -> (), failure: @escaping (_ failure: String) -> ()) {
-        var request = URLRequest(url: URL(string: kLoginEndpoint)!)
+        var request = URLRequest(url: URL(string: Constants.Udacity.loginEndpoint)!)
         request.httpMethod = HTTPMethod.POST.rawValue
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(Constants.Udacity.Value.applicationJSON, forHTTPHeaderField: Constants.Udacity.Key.accept)
+        request.addValue(Constants.Udacity.Value.applicationJSON, forHTTPHeaderField: Constants.Udacity.Key.contentType)
         request.httpBody = dictionaryToJSON(params: parameters)
         requestAPI(withURLRequest: request, success: { data in
             success(data)
@@ -28,7 +26,7 @@ struct API: APIHelperProtocol {
     }
     
     func udacityLogout() {
-        let request = NSMutableURLRequest(url: URL(string: kLogoutEndpoint)!)
+        let request = NSMutableURLRequest(url: URL(string: Constants.Udacity.loginEndpoint)!)
         request.httpMethod = HTTPMethod.DELETE.rawValue
         var xsrfCookie: HTTPCookie? = nil
         let sharedCookieStorage = HTTPCookieStorage.shared

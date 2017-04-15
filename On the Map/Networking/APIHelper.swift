@@ -37,15 +37,15 @@ extension APIHelperProtocol {
             
             let statusCode = (response as? HTTPURLResponse)?.statusCode
             if statusCode == 403 {
-                failure(Constants.Error.InvalidCredentials)
+                failure(Constants.Error.invalidCredentials)
                 return
             }else if statusCode! < 200 && statusCode! > 299 {
-                failure(Constants.Error.RequestFailed)
+                failure(Constants.Error.requestFailed)
                 return
             }
             
             guard let data = data else {
-                failure(Constants.Error.NoData)
+                failure(Constants.Error.noData)
                 return
             }
             

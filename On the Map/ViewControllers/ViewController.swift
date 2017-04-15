@@ -16,9 +16,9 @@ class ViewController: UIViewController, ActivityIndicator {
     
     @IBOutlet fileprivate weak var loginButton: UIButton! {
         didSet {
-            loginButton.backgroundColor = Constants.Colors.UdacityBlue
-            loginButton.setTitle("Login", for: .normal)
-            loginButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 18)
+            loginButton.backgroundColor = Appearance.Colors.udacityBlue
+            loginButton.setTitle(Constants.Copy.login.rawValue, for: .normal)
+            loginButton.titleLabel?.font = Appearance.Font.mediumRoboto()
             loginButton.setTitleColor(.white, for: .normal)
             loginButton.udacityButton()
             loginButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
@@ -27,10 +27,18 @@ class ViewController: UIViewController, ActivityIndicator {
     
     @IBOutlet fileprivate weak var signUpButton: UIButton! {
         didSet {
-            signUpButton.setTitleColor(Constants.Colors.UdacityBlue, for: .normal)
+            let noAccountAttributes: [String : Any] = [NSFontAttributeName: Appearance.Font.regularRoboto(),
+                                                       NSForegroundColorAttributeName: UIColor.black]
+            let signUpAttributes: [String : Any] = [NSFontAttributeName: Appearance.Font.regularRoboto(),
+                                                    NSForegroundColorAttributeName: Appearance.Colors.udacityBlue]
+            
+            let noAccountCopy = NSMutableAttributedString(string: Constants.Copy.noAccount.rawValue,
+                                                   attributes: noAccountAttributes)
+            let signUpCopy = NSAttributedString(string: Constants.Copy.signUp.rawValue,
+                                                attributes: signUpAttributes)
+            noAccountCopy.append(signUpCopy)
+            signUpButton.setAttributedTitle(noAccountCopy, for: .normal)
             signUpButton.addTarget(self, action: #selector(signUpAction), for: .touchUpInside)
-            signUpButton.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 15)
-
         }
     }
     
@@ -68,15 +76,15 @@ class ViewController: UIViewController, ActivityIndicator {
         let password = passwordTextField.text ?? ""
         if !Validator.validateEmail(email) {
             updateLoginButtonState()
-            showAlert(withError: Constants.Error.InvalidEmail)
+            showAlert(withError: Constants.Error.invalidEmail)
         } else if password.isEmpty {
             updateLoginButtonState()
-            showAlert(withError: Constants.Error.NoPassword)
+            showAlert(withError: Constants.Error.noPassword)
         } else {
             showIndicator()
             let parameters = ["udacity": ["username": email, "password": password]]
             dispatchOnBackground { [weak self] void in
-                guard let strongSelf = self else { print("hp");return }
+                guard let strongSelf = self else { return }
                 strongSelf.api.udacityLogin(parameters: parameters, success: { data in
                     strongSelf.hideIndicator()
                     updateUI {
@@ -97,7 +105,7 @@ class ViewController: UIViewController, ActivityIndicator {
     }
     
     @objc fileprivate func signUpAction() {
-        UIApplication.shared.open(URL(string: Constants.Udacity.SignUpURL)!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(URL(string: Constants.Udacity.signUpURL)!, options: [:], completionHandler: nil)
     }
     
     fileprivate func updateLoginButtonState() {
@@ -106,8 +114,8 @@ class ViewController: UIViewController, ActivityIndicator {
     }
     
     fileprivate func showAlert(withError error: String) {
-        let alert = UIAlertController(title: Constants.Error.Title, message: error, preferredStyle: .alert)
-        let closeAction = UIAlertAction(title: Constants.Copies.Close.rawValue, style: .default, handler: nil)
+        let alert = UIAlertController(title: Constants.Error.title, message: error, preferredStyle: .alert)
+        let closeAction = UIAlertAction(title: Constants.Copy.close.rawValue, style: .default, handler: nil)
         alert.addAction(closeAction)
         present(alert, animated: true, completion: nil)
     }

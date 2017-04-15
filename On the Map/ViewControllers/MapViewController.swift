@@ -24,7 +24,8 @@ class MapViewController: UIViewController, ActivityIndicator {
     }
     
     fileprivate func configureButtons() {
-        let logoutButton = UIBarButtonItem(title: Constants.Copies.Logout.rawValue, style: .plain, target: self, action: #selector(logout))
+        let logoutButton = UIBarButtonItem(title: Constants.Copy.logout.rawValue, style: .plain, target: self, action: #selector(logout))
+        logoutButton.setTitleTextAttributes([NSFontAttributeName: Appearance.Font.mediumRoboto(withSize: 16)], for: .normal)
         let pinButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_addpin"), style: .plain, target: self, action: #selector(location))
         let refreshButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_refresh"), style: .plain, target: self, action: #selector(refresh))
         navigationItem.leftBarButtonItem = logoutButton
@@ -88,8 +89,8 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let annotation = view.annotation, var urlString = annotation.subtitle ?? nil else { return }
-        if !(urlString.contains(Constants.Udacity.ApiScheme)) && !(urlString.contains(Constants.Udacity.CommonApiScheme)) {
-            urlString = Constants.Udacity.CommonApiScheme + urlString
+        if !(urlString.contains(Constants.Udacity.apiScheme)) && !(urlString.contains(Constants.Udacity.commonApiScheme)) {
+            urlString = Constants.Udacity.commonApiScheme + urlString
         }
         if let url = URL(string: urlString) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)

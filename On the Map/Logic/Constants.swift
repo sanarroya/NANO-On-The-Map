@@ -13,11 +13,11 @@ struct Constants {
     
     // MARK: TMDB
     struct Udacity {
-        static let ApiScheme = "https://"
-        static let CommonApiScheme = "http://"
-        static let ApiHost = "www.udaciy.com/api"
-        static let ApiLoginPath = "/session"
-        static let SignUpURL = "https://www.udacity.com/account/auth#!/signup"
+        static let apiScheme = "https://"
+        static let commonApiScheme = "http://"
+        static let apiHost = "www.udaciy.com/api"
+        static let apiLoginPath = "/session"
+        static let signUpURL = "https://www.udacity.com/account/auth#!/signup"
     }
     
     struct UdacityParseAPI {
@@ -35,46 +35,19 @@ struct Constants {
         }
     }
     
-    // MARK: TMDB Parameter Keys
-    struct TMDBParameterKeys {
-        static let ApiKey = "api_key"
-        static let RequestToken = "request_token"
-        static let SessionID = "session_id"
-        static let Username = "username"
-        static let Password = "password"
-    }
-    
-    // MARK: TMDB Parameter Values
-    struct TMDBParameterValues {
-        static let ApiKey = "YOUR_API_KEY_HERE"
-    }
-    
-    // MARK: TMDB Response Keys
-    struct TMDBResponseKeys {
-        static let Title = "title"
-        static let ID = "id"
-        static let PosterPath = "poster_path"
-        static let StatusCode = "status_code"
-        static let StatusMessage = "status_message"
-        static let SessionID = "session_id"
-        static let RequestToken = "request_token"
-        static let Success = "success"
-        static let UserID = "id"
-        static let Results = "results"
-    }
-    
     struct Error {
-        static let RequestFailed = "The request failed, try again."
-        static let Title = "Error"
-        static let InvalidCredentials = "Wrong email or password."
-        static let NoData = "No data was returned by the request!"
-        static let InvalidEmail = "Please enter a valid email address."
-        static let NoPassword = "Please enter your password."
+        static let requestFailed = "The request failed, try again."
+        static let title = "Error"
+        static let invalidCredentials = "Wrong email or password."
+        static let noData = "No data was returned by the request!"
+        static let invalidEmail = "Please enter a valid email address."
+        static let noPassword = "Please enter your password."
     }
     
-    // MARK: UI
-    struct Colors {
-        static let UdacityBlue = UIColor(red: 2/255, green: 179/255, blue: 228/255, alpha: 1)
+    struct Font {
+        static let robotoThin = "Roboto-Thin"
+        static let robotoRegular = "Roboto-Regular"
+        static let robotoMedium = "Roboto-Medium"
     }
     
     // MARK: Segues
@@ -82,8 +55,11 @@ struct Constants {
         static let mapViewSegue = "ShowPins"
     }
     
-    enum Copies: String {
-        case Logout
-        case Close
+    enum Copy: String {
+        case login = "Login"
+        case logout = "Logout"
+        case close = "Close"
+        case noAccount = "Don't have an account? "
+        case signUp = "Sign Up"
     }
 }

@@ -61,10 +61,10 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zin-pq-boF">
-                                <rect key="frame" x="48" y="314" width="279" height="24"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                <rect key="frame" x="48" y="314" width="279" height="34"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                 <state key="normal" title="Don't have an account? Sign Up">
-                                    <color key="titleColor" red="0.40461586275011163" green="0.97831821441650391" blue="0.19715574513135328" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleColor" red="0.0078431372550000003" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                             </button>
                         </subviews>
@@ -107,12 +107,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="N0Q-EO-69c">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentCell" textLabel="AlW-uv-8Dm" detailTextLabel="i2Q-NX-bNF" style="IBUITableViewCellStyleSubtitle" id="N0Q-EO-69c" customClass="OnTheMapTableViewCell" customModule="On_the_Map" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N0Q-EO-69c" id="pnQ-hM-PeX">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AlW-uv-8Dm">
+                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i2Q-NX-bNF">
+                                            <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -182,9 +198,11 @@
         <scene sceneID="ZgE-O9-fx6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="71N-Li-Zab" customClass="OTMNavigationViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icon_mapview-deselected" id="Gh2-bA-SNG"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_mapview-deselected" id="Gh2-bA-SNG">
+                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                    </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J3E-Qf-XN3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="J3E-Qf-XN3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -201,9 +219,11 @@
         <scene sceneID="Sa1-KY-vYX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7th-cb-FDe" customClass="OTMNavigationViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icon_listview-deselected" id="fLO-a9-ZQf"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_listview-deselected" id="fLO-a9-ZQf">
+                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Apv-5D-o82">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Apv-5D-o82">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

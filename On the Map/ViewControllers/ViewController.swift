@@ -16,18 +16,21 @@ class ViewController: UIViewController, ActivityIndicator {
     
     @IBOutlet fileprivate weak var loginButton: UIButton! {
         didSet {
-            loginButton.backgroundColor = Constants.Colors.UdacityOrangeButton
+            loginButton.backgroundColor = Constants.Colors.UdacityBlue
             loginButton.setTitle("Login", for: .normal)
-            loginButton.titleLabel?.font = UIFont(name: "Roboto-Medium.ttf", size: 20.0)
+            loginButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 18)
             loginButton.setTitleColor(.white, for: .normal)
+            loginButton.udacityButton()
             loginButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         }
     }
     
     @IBOutlet fileprivate weak var signUpButton: UIButton! {
         didSet {
-            signUpButton.titleLabel?.font = UIFont(name: "Roboto-Medium.ttf", size: 20.0)
+            signUpButton.setTitleColor(Constants.Colors.UdacityBlue, for: .normal)
             signUpButton.addTarget(self, action: #selector(signUpAction), for: .touchUpInside)
+            signUpButton.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 15)
+
         }
     }
     
@@ -37,6 +40,7 @@ class ViewController: UIViewController, ActivityIndicator {
             emailTextField.autocorrectionType = .no
             emailTextField.autocapitalizationType = .none
             emailTextField.textColor = .lightGray
+            emailTextField.udacityField()
             emailTextField.text = "sanarroya@gmail.com"
         }
     }
@@ -47,6 +51,7 @@ class ViewController: UIViewController, ActivityIndicator {
             passwordTextField.autocorrectionType = .no
             passwordTextField.autocapitalizationType = .none
             passwordTextField.textColor = .lightGray
+            passwordTextField.udacityField()
             passwordTextField.text = "ogaitnas910112"
         }
     }

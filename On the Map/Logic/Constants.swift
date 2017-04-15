@@ -74,9 +74,7 @@ struct Constants {
     
     // MARK: UI
     struct Colors {
-        static let UdacityOrange = UIColor(red: 255/255, green: 105/255, blue: 0/255, alpha: 1)
-        static let UdacityOrangeButton = UIColor(red: 229/255, green: 83/255, blue: 0/255, alpha: 1)
-        static let UdacityOrange60 =  Constants.Colors.UdacityOrange.withAlphaComponent(-1.0)
+        static let UdacityBlue = UIColor(red: 2/255, green: 179/255, blue: 228/255, alpha: 1)
     }
     
     // MARK: Segues

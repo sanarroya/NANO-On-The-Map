@@ -25,10 +25,10 @@ class MapViewController: UIViewController, ActivityIndicator {
     
     fileprivate func configureButtons() {
         let logoutButton = UIBarButtonItem(title: Constants.Copies.Logout.rawValue, style: .plain, target: self, action: #selector(logout))
-        let pinButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pin"), style: .plain, target: self, action: #selector(location))
-        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
+        let pinButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_addpin"), style: .plain, target: self, action: #selector(location))
+        let refreshButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_refresh"), style: .plain, target: self, action: #selector(refresh))
         navigationItem.leftBarButtonItem = logoutButton
-        navigationItem.rightBarButtonItems = [refreshButton, pinButton]
+        navigationItem.rightBarButtonItems = [pinButton, refreshButton]
     }
     
     func logout() {
@@ -88,7 +88,7 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let annotation = view.annotation, var urlString = annotation.subtitle ?? nil else { return }
-        if !(urlString.contains(Constants.Udacity.ApiScheme)) || !(urlString.contains(Constants.Udacity.CommonApiScheme)) {
+        if !(urlString.contains(Constants.Udacity.ApiScheme)) && !(urlString.contains(Constants.Udacity.CommonApiScheme)) {
             urlString = Constants.Udacity.CommonApiScheme + urlString
         }
         if let url = URL(string: urlString) {

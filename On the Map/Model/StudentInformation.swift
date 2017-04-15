@@ -34,15 +34,15 @@ struct StudentInformation {
     }
  
     init(fromDictionary dictionary: [String : Any]) {
-        self.objectId = (dictionary["objectId"] ?? "") as! String
-        self.uniqueKey = (dictionary["uniqueKey"] ?? "") as! String
-        self.firstName = (dictionary["firstName"] ?? "") as! String
-        self.lastName = (dictionary["lastName"] ?? "") as! String
-        self.mapString = (dictionary["mapString"] ?? "") as! String
-        self.mediaURL = (dictionary["mediaURL"] ?? "") as! String
-        self.latitude = (dictionary["latitude"] ?? "") as! Float
-        self.longitude = (dictionary["longitude"] ?? "") as! Float
-        self.createdAt = (dictionary["createdAt"] ?? "") as! String
-        self.updatedAt = (dictionary["updatedAt"] ?? "") as! String
+        self.objectId = (dictionary["objectId"] as? String) ?? ""
+        self.uniqueKey = (dictionary["uniqueKey"] as? String) ?? ""
+        self.firstName = (dictionary["firstName"] as? String) ?? ""
+        self.lastName = (dictionary["lastName"] as? String) ?? ""
+        self.mapString = (dictionary["mapString"] as? String) ?? ""
+        self.mediaURL = (dictionary["mediaURL"] as? String) ?? ""
+        self.latitude = (dictionary["latitude"] as? Float) ?? 0
+        self.longitude = (dictionary["longitude"] as? Float) ?? 0
+        self.createdAt = (dictionary["createdAt"] as? String) ?? ""
+        self.updatedAt = (dictionary["updatedAt"] as? String) ?? ""
     }
 }

@@ -30,7 +30,7 @@ extension ActivityIndicator where Self: UIViewController {
     }
     
     func configureSpinner() {
-        spinner.color = .white
+        spinner.color = Constants.Colors.UdacityBlue
         spinner.hidesWhenStopped = true
         spinner.center = view.center
         view.addSubview(spinner)

@@ -9,14 +9,18 @@
 import Foundation
 import UIKit
 
-extension UIView {
-    func addGradient(withColors colors: [UIColor]) {
-        backgroundColor = .orange
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = bounds
-        gradientLayer.colors = colors.flatMap{ $0.cgColor }
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        layer.addSublayer(gradientLayer)
+extension UITextField {
+    func udacityField() {
+        layer.cornerRadius = 4
+        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderWidth = 1
+    }
+}
+
+extension UIButton {
+    func udacityButton() {
+        layer.cornerRadius = 4
+        layer.borderColor = Constants.Colors.UdacityBlue.cgColor
+        layer.borderWidth = 1
     }
 }

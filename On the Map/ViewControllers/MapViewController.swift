@@ -69,6 +69,7 @@ class MapViewController: UIViewController, ActivityIndicator {
 
     fileprivate func fetchStudents() {
         if !StudentsInformation.sharedInstance.studentsFetched {
+            showIndicator()
             dispatchOnBackground {
                 ParseAPI().getStudentsLocations(success: { [weak self] students in
                     guard let strongself = self else { return }
@@ -76,6 +77,7 @@ class MapViewController: UIViewController, ActivityIndicator {
                         StudentsInformation.sharedInstance.students = students
                         strongself.annotations = strongself.configureAnnotations(withStudents: students)
                         strongself.mapView.addAnnotations(strongself.annotations)
+                        strongself.hideIndicator()
                     }
                 }, failure: { [weak self] error in
                     guard let strongself = self else { return }

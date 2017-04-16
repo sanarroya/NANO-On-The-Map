@@ -28,7 +28,7 @@
 		D9F0D0961DA184D6004DF3BE /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9F0D0931DA184D6004DF3BE /* Roboto-Medium.ttf */; };
 		D9F0D0971DA184D6004DF3BE /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9F0D0941DA184D6004DF3BE /* Roboto-Regular.ttf */; };
 		D9F0D0981DA184D6004DF3BE /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9F0D0951DA184D6004DF3BE /* Roboto-Thin.ttf */; };
-		D9F0D09B1DA1A9DF004DF3BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0D09A1DA1A9DF004DF3BE /* ViewController.swift */; };
+		D9F0D09B1DA1A9DF004DF3BE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0D09A1DA1A9DF004DF3BE /* LoginViewController.swift */; };
 		D9F0D09E1DA1AA72004DF3BE /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0D09D1DA1AA72004DF3BE /* AppAppearance.swift */; };
 		D9F0D0A01DA1C7AC004DF3BE /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0D09F1DA1C7AC004DF3BE /* Validator.swift */; };
 /* End PBXBuildFile section */
@@ -57,7 +57,7 @@
 		D9F0D0931DA184D6004DF3BE /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		D9F0D0941DA184D6004DF3BE /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		D9F0D0951DA184D6004DF3BE /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		D9F0D09A1DA1A9DF004DF3BE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D9F0D09A1DA1A9DF004DF3BE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D9F0D09D1DA1AA72004DF3BE /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		D9F0D09F1DA1C7AC004DF3BE /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,7 +159,7 @@
 		D9F0D0991DA1A9B2004DF3BE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D9F0D09A1DA1A9DF004DF3BE /* ViewController.swift */,
+				D9F0D09A1DA1A9DF004DF3BE /* LoginViewController.swift */,
 				D21727F61E42B64700D1D036 /* MapViewController.swift */,
 				D21727F81E42C76800D1D036 /* ListViewController.swift */,
 				D24134801EA2969F00E73757 /* AddLocationViewController.swift */,
@@ -262,7 +262,7 @@
 				D241347F1EA219C200E73757 /* OnTheMapTableViewCell.swift in Sources */,
 				D9F0D0851DA07592004DF3BE /* UdacityAPI.swift in Sources */,
 				D21727F71E42B64700D1D036 /* MapViewController.swift in Sources */,
-				D9F0D09B1DA1A9DF004DF3BE /* ViewController.swift in Sources */,
+				D9F0D09B1DA1A9DF004DF3BE /* LoginViewController.swift in Sources */,
 				D24134811EA2969F00E73757 /* AddLocationViewController.swift in Sources */,
 				D9F0D08D1DA08330004DF3BE /* Constants.swift in Sources */,
 				D9F0D08F1DA086C6004DF3BE /* ActivityIndicatorProtocol.swift in Sources */,

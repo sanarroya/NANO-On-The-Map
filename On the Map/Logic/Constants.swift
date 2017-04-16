@@ -11,7 +11,6 @@ import UIKit
 
 struct Constants {
     
-    // MARK: TMDB
     struct Udacity {
         static let apiScheme = "https://"
         static let commonApiScheme = "http://"
@@ -87,10 +86,10 @@ struct Constants {
         static let robotoMedium = "Roboto-Medium"
     }
     
-    // MARK: Segues
     struct SegueIds {
         static let mapViewSegue = "ShowPins"
         static let addLocationSegue = "AddLocation"
+        static let confirmLocationSegue = "ConfirmLocation"
     }
     
     struct Copy {
@@ -102,5 +101,10 @@ struct Constants {
         static let cancel = "Cancel"
         static let findLocation = "FIND LOCATION"
         static let finish = "FINISH"
+    }
+    
+    struct Map {
+        static let pinId = "pin"
+        static let regionMeters: Double = 1000
     }
 }

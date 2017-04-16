@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, ActivityIndicator {
+class LoginViewController: UIViewController, ActivityIndicator {
 
     fileprivate let api = API()
     
@@ -41,7 +41,6 @@ class ViewController: UIViewController, ActivityIndicator {
         didSet {
             emailTextField.keyboardType = .emailAddress
             emailTextField.udacityField()
-            emailTextField.text = "sanarroya@gmail.com"
         }
     }
     
@@ -49,7 +48,6 @@ class ViewController: UIViewController, ActivityIndicator {
         didSet {
             passwordTextField.isSecureTextEntry = true
             passwordTextField.udacityField()
-            passwordTextField.text = "ogaitnas910112"
         }
     }
 
@@ -58,7 +56,7 @@ class ViewController: UIViewController, ActivityIndicator {
         configureSpinner()
     }
     
-    @objc fileprivate func loginAction() {
+    func loginAction() {
         updateLoginButtonState()
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
@@ -97,7 +95,7 @@ class ViewController: UIViewController, ActivityIndicator {
         }
     }
     
-    @objc fileprivate func signUpAction() {
+    func signUpAction() {
         UIApplication.shared.open(URL(string: Constants.Udacity.signUpURL)!, options: [:], completionHandler: nil)
     }
     
@@ -105,13 +103,6 @@ class ViewController: UIViewController, ActivityIndicator {
         loginButton.isEnabled = !loginButton.isEnabled
         signUpButton.isEnabled = !signUpButton.isEnabled
         loginButton.alpha = loginButton.isEnabled ? 1.0 : 0.3
-    }
-    
-    fileprivate func showAlert(withError error: String) {
-        let alert = UIAlertController(title: Constants.Error.title, message: error, preferredStyle: .alert)
-        let closeAction = UIAlertAction(title: Constants.Copy.close, style: .default, handler: nil)
-        alert.addAction(closeAction)
-        present(alert, animated: true, completion: nil)
     }
     
     fileprivate func clearFields() {

@@ -71,21 +71,38 @@ class ListViewController: UITableViewController, ActivityIndicator {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! OnTheMapTableViewCell
         return cell.configureCell(withStudent: students[indexPath.row])
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        let student = students[indexPath.row]
+        var urlString = student.mediaURL
+        cell?.setSelected(false, animated: true)
+        if !(urlString.contains(Constants.Udacity.apiScheme)) && !(urlString.contains(Constants.Udacity.commonApiScheme)) {
+            urlString = Constants.Udacity.commonApiScheme + student.mediaURL
+        }
+        if let url = URL(string: urlString) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
 
     fileprivate func fetchStudents() {
         if !StudentsInformation.sharedInstance.studentsFetched {
             showIndicator()
             dispatchOnBackground {
                 ParseAPI().getStudentsLocations(success: { [weak self] students in
+                    guard let strongself = self else { return }
                     updateUI {
-                        guard let strongself = self else { return }
                         StudentsInformation.sharedInstance.students = students
                         strongself.students = students
                         strongself.tableView.reloadData()
                         strongself.hideIndicator()
                     }
-                }, failure: { error in
-                        
+                }, failure: { [weak self] error in
+                    guard let strongself = self else { return }
+                    updateUI {
+                        strongself.hideIndicator()
+                        strongself.showAlert(withError: error)
+                    }
                 })
             }
         } else {

@@ -9,8 +9,9 @@
 import UIKit
 import CoreLocation
 
-class AddLocationViewController: UIViewController {
+class AddLocationViewController: UIViewController, ActivityIndicator {
 
+    var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
     
     @IBOutlet fileprivate weak var locationTextField: UITextField! {
         didSet {
@@ -35,6 +36,7 @@ class AddLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCancelButton()
+        configureSpinner()
     }
     
     fileprivate func configureCancelButton() {
@@ -48,6 +50,7 @@ class AddLocationViewController: UIViewController {
     }
     
     func findLocation() {
+        showIndicator()
         let location = locationTextField.text ?? ""
         let url = websiteTextField.text ?? ""
         
@@ -59,15 +62,18 @@ class AddLocationViewController: UIViewController {
             showAlert(withError: Constants.Error.invalidWebsite)
         } else {
             CLGeocoder().geocodeAddressString(location, completionHandler: { (placemarks, error) in
-                print(placemarks!)
+                self.hideIndicator()
+                guard error == nil else {
+                    self.showAlert(withError: (error?.localizedDescription)!)
+                    return
+                }
+                guard let place = placemarks?[0], let placeLocation = place.location else { return }
+                StudentsInformation.sharedInstance.currentUserInformation.mediaURL = url
+                StudentsInformation.sharedInstance.currentUserInformation.mapString = location
+                StudentsInformation.sharedInstance.currentUserInformation.latitude = Float(placeLocation.coordinate.latitude)
+                StudentsInformation.sharedInstance.currentUserInformation.longitude = Float(placeLocation.coordinate.longitude)
+                self.performSegue(withIdentifier: Constants.SegueIds.confirmLocationSegue, sender: nil)
             })
         }
-    }
-    
-    fileprivate func showAlert(withError error: String) {
-        let alert = UIAlertController(title: Constants.Error.title, message: error, preferredStyle: .alert)
-        let closeAction = UIAlertAction(title: Constants.Copy.close, style: .default, handler: nil)
-        alert.addAction(closeAction)
-        present(alert, animated: true, completion: nil)
     }
 }

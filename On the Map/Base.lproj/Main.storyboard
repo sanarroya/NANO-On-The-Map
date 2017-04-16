@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -325,7 +325,7 @@
                         <outlet property="findLocationButton" destination="MEs-Z1-ptq" id="RtQ-Zo-uOH"/>
                         <outlet property="locationTextField" destination="yc2-7e-J2c" id="Ty5-xk-fpl"/>
                         <outlet property="websiteTextField" destination="dSX-1s-5dt" id="h0V-5w-KZ0"/>
-                        <segue destination="oGq-Yt-ng3" kind="show" id="X2A-te-ycG"/>
+                        <segue destination="oGq-Yt-ng3" kind="show" identifier="ConfirmLocation" id="X2A-te-ycG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xv8-db-vRV" sceneMemberID="firstResponder"/>

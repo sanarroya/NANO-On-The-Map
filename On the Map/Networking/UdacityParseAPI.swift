@@ -23,15 +23,15 @@ struct ParseAPI: APIHelperProtocol {
         }
     }
     
-    func addStudentLocation(student: ResponseDictionary, success: @escaping ([StudentInformation]) -> (), failure: @escaping ErrorBlock) {
+    func addStudentLocation(student: ResponseDictionary, success: @escaping SuccessEmptyBlock, failure: @escaping ErrorBlock) {
         var request = URLRequest(url: URL(string: Constants.UdacityParseAPI.studentLocationEndpoint)!)
         request.httpMethod = HTTPMethod.POST.rawValue
         request.httpBody = dictionaryToJSON(params: student)
         addHeadersTo(request: &request)
-        requestAPI(withURLRequest: request, success: { data in
-            
+        requestAPI(withURLRequest: request, success: { _ in
+            success()
         }) { error in
-            
+            failure(error)
         }
     }
     

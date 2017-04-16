@@ -71,14 +71,18 @@ class MapViewController: UIViewController, ActivityIndicator {
         if !StudentsInformation.sharedInstance.studentsFetched {
             dispatchOnBackground {
                 ParseAPI().getStudentsLocations(success: { [weak self] students in
+                    guard let strongself = self else { return }
                     updateUI {
-                        guard let strongself = self else { return }
                         StudentsInformation.sharedInstance.students = students
                         strongself.annotations = strongself.configureAnnotations(withStudents: students)
                         strongself.mapView.addAnnotations(strongself.annotations)
                     }
-                    }, failure: { error in
-                        
+                }, failure: { [weak self] error in
+                    guard let strongself = self else { return }
+                    updateUI {
+                        strongself.hideIndicator()
+                        strongself.showAlert(withError: error)
+                    }
                 })
             }
         } else {
@@ -91,13 +95,13 @@ class MapViewController: UIViewController, ActivityIndicator {
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? StudentAnnotation {
-            let kIdentifier = "pin"
+            let identifier = Constants.Map.pinId
             var view: MKPinAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: kIdentifier) as? MKPinAnnotationView {
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView {
                 dequeuedView.annotation = annotation
                 view = dequeuedView
             } else {
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: kIdentifier)
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
                 view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView

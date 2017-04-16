@@ -35,5 +35,11 @@ extension ActivityIndicator where Self: UIViewController {
         spinner.center = view.center
         view.addSubview(spinner)
     }
-
+    
+    func showAlert(withError error: String) {
+        let alert = UIAlertController(title: Constants.Error.title, message: error, preferredStyle: .alert)
+        let closeAction = UIAlertAction(title: Constants.Copy.close, style: .default, handler: nil)
+        alert.addAction(closeAction)
+        present(alert, animated: true, completion: nil)
+    }
 }

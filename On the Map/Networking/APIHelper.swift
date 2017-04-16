@@ -41,7 +41,7 @@ extension APIHelperProtocol {
             
             let statusCode = (response as? HTTPURLResponse)?.statusCode
             if statusCode == 403 {
-                failure(Constants.Error.invalidCredentials)
+                failure(url.isParseRequest ? Constants.Error.problemFetchingStudents : Constants.Error.invalidCredentials)
                 return
             }else if statusCode! < 200 && statusCode! > 299 {
                 failure(Constants.Error.requestFailed)

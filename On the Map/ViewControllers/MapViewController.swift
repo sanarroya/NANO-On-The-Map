@@ -43,8 +43,11 @@ class MapViewController: UIViewController, ActivityIndicator {
                 updateUI {
                     strongself.dismiss(animated: true, completion: nil)
                 }
-            }) { error in
-                
+            }) { [weak self] error in
+                guard let strongself = self else { return }
+                updateUI {
+                    strongself.showAlert(withError: error)
+                }
             }
         }
     }
@@ -52,6 +55,7 @@ class MapViewController: UIViewController, ActivityIndicator {
     func refresh() {
         mapView.removeAnnotations(annotations)
         annotations.removeAll()
+        StudentsInformation.sharedInstance.studentsFetched = false
         fetchStudents()
     }
     

@@ -39,6 +39,10 @@ class AddLocationViewController: UIViewController, ActivityIndicator {
         configureSpinner()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     fileprivate func configureCancelButton() {
         let cancelButton = UIBarButtonItem(title: Constants.Copy.cancel, style: .plain, target: self, action: #selector(dismissView))
         cancelButton.setTitleTextAttributes([NSFontAttributeName: Appearance.Font.mediumRoboto(withSize: 16)], for: .normal)
@@ -55,10 +59,13 @@ class AddLocationViewController: UIViewController, ActivityIndicator {
         let url = websiteTextField.text ?? ""
         
         if location.isEmpty {
+            hideIndicator()
             showAlert(withError: Constants.Error.noLocation)
         } else if url.isEmpty {
+            hideIndicator()
             showAlert(withError: Constants.Error.noWebsite)
         } else if !UIApplication.shared.canOpenURL(URL(string: url)!) {
+            hideIndicator()
             showAlert(withError: Constants.Error.invalidWebsite)
         } else {
             CLGeocoder().geocodeAddressString(location, completionHandler: { (placemarks, error) in

@@ -11,7 +11,6 @@ import UIKit
 class ListViewController: UITableViewController, ActivityIndicator {
 
     var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
-    var students = [StudentInformation]()
     let cellIdentifier = "StudentCell"
     
     override func viewDidLoad() {
@@ -43,13 +42,18 @@ class ListViewController: UITableViewController, ActivityIndicator {
                 updateUI {
                     strongself.dismiss(animated: true, completion: nil)
                 }
-            }) { error in
+            }) { [weak self] error in
+                guard let strongself = self else { return }
+                updateUI {
+                    strongself.showAlert(withError: error)
+                }
             }
         }
     }
     
     func refresh() {
-        students.removeAll()
+        StudentsInformation.sharedInstance.studentsFetched = false
+        StudentsInformation.sharedInstance.students.removeAll()
         fetchStudents()
     }
     
@@ -64,17 +68,17 @@ class ListViewController: UITableViewController, ActivityIndicator {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return students.count
+        return StudentsInformation.sharedInstance.students.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! OnTheMapTableViewCell
-        return cell.configureCell(withStudent: students[indexPath.row])
+        return cell.configureCell(withStudent: StudentsInformation.sharedInstance.students[indexPath.row])
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        let student = students[indexPath.row]
+        let student = StudentsInformation.sharedInstance.students[indexPath.row]
         var urlString = student.mediaURL
         cell?.setSelected(false, animated: true)
         if !(urlString.contains(Constants.Udacity.apiScheme)) && !(urlString.contains(Constants.Udacity.commonApiScheme)) {
@@ -93,7 +97,6 @@ class ListViewController: UITableViewController, ActivityIndicator {
                     guard let strongself = self else { return }
                     updateUI {
                         StudentsInformation.sharedInstance.students = students
-                        strongself.students = students
                         strongself.tableView.reloadData()
                         strongself.hideIndicator()
                     }
@@ -106,7 +109,6 @@ class ListViewController: UITableViewController, ActivityIndicator {
                 })
             }
         } else {
-            students = StudentsInformation.sharedInstance.students
             tableView.reloadData()
             hideIndicator()
         }

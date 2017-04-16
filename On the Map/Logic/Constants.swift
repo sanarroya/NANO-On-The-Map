@@ -78,6 +78,8 @@ struct Constants {
         static let noLocation = "Must enter a location"
         static let noWebsite = "Must enter a website"
         static let invalidWebsite = "Invalid Link. Include http(s)://."
+        static let problemFetchingStudents = "Please try again later, there is a problem fetching the students"
+        static let logoutFailed = "Please try to logout again later"
     }
     
     struct Font {

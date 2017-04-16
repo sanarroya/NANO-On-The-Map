@@ -17,7 +17,7 @@ struct ParseAPI: APIHelperProtocol {
         addHeadersTo(request: &request)
         requestAPI(withURLRequest: request as URLRequest, success: { data in
             let params = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-            success(self.parseStudentsLocationResponse(params as! ResponseDictionary))
+            success(self.parseStudentsLocationResponse(params as! ResponseDictionary).sorted(by: { $0.updatedAt > $1.updatedAt }))
         }) { error in
             failure(error)
         }

@@ -56,6 +56,10 @@ class LoginViewController: UIViewController, ActivityIndicator {
         configureSpinner()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     func loginAction() {
         updateLoginButtonState()
         let email = emailTextField.text ?? ""

@@ -52,8 +52,8 @@ class ListViewController: UITableViewController, ActivityIndicator {
     }
     
     func refresh() {
-        StudentsInformation.sharedInstance.studentsFetched = false
         StudentsInformation.sharedInstance.students.removeAll()
+        StudentsInformation.sharedInstance.studentsFetched = false
         fetchStudents()
     }
     

@@ -33,16 +33,28 @@ struct StudentInformation {
         }
     }
  
-    init(fromDictionary dictionary: [String : Any]) {
-        self.objectId = (dictionary["objectId"] as? String) ?? ""
-        self.uniqueKey = (dictionary["uniqueKey"] as? String) ?? ""
-        self.firstName = (dictionary["firstName"] as? String) ?? ""
-        self.lastName = (dictionary["lastName"] as? String) ?? ""
-        self.mapString = (dictionary["mapString"] as? String) ?? ""
-        self.mediaURL = (dictionary["mediaURL"] as? String) ?? ""
-        self.latitude = (dictionary["latitude"] as? Float) ?? 0
-        self.longitude = (dictionary["longitude"] as? Float) ?? 0
-        self.createdAt = (dictionary["createdAt"] as? String) ?? ""
-        self.updatedAt = (dictionary["updatedAt"] as? String) ?? ""
+    init(fromDictionary dictionary: ResponseDictionary) {
+        self.objectId = (dictionary[Constants.UdacityParseAPI.Key.objectId] as? String) ?? ""
+        self.uniqueKey = (dictionary[Constants.UdacityParseAPI.Key.uniqueKey] as? String) ?? ""
+        self.firstName = (dictionary[Constants.UdacityParseAPI.Key.firstName] as? String) ?? ""
+        self.lastName = (dictionary[Constants.UdacityParseAPI.Key.lastName] as? String) ?? ""
+        self.mapString = (dictionary[Constants.UdacityParseAPI.Key.mapString] as? String) ?? ""
+        self.mediaURL = (dictionary[Constants.UdacityParseAPI.Key.mediaURL] as? String) ?? ""
+        self.latitude = (dictionary[Constants.UdacityParseAPI.Key.latitude] as? Float) ?? 0
+        self.longitude = (dictionary[Constants.UdacityParseAPI.Key.longitude] as? Float) ?? 0
+        self.createdAt = (dictionary[Constants.UdacityParseAPI.Key.createdAt] as? String) ?? ""
+        self.updatedAt = (dictionary[Constants.UdacityParseAPI.Key.updatedAt] as? String) ?? ""
+    }
+    
+    func serialize() -> ResponseDictionary {
+        var dictionary = ResponseDictionary()
+        dictionary[Constants.UdacityParseAPI.Key.uniqueKey] = self.uniqueKey
+        dictionary[Constants.UdacityParseAPI.Key.firstName] = self.firstName
+        dictionary[Constants.UdacityParseAPI.Key.lastName] = self.lastName
+        dictionary[Constants.UdacityParseAPI.Key.mapString] = self.mapString
+        dictionary[Constants.UdacityParseAPI.Key.mediaURL] = self.mediaURL
+        dictionary[Constants.UdacityParseAPI.Key.latitude] = self.latitude
+        dictionary[Constants.UdacityParseAPI.Key.longitude] = self.longitude
+        return dictionary
     }
 }

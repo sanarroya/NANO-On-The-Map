@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AddLocationViewController: UIViewController {
 
@@ -47,6 +48,26 @@ class AddLocationViewController: UIViewController {
     }
     
     func findLocation() {
+        let location = locationTextField.text ?? ""
+        let url = websiteTextField.text ?? ""
         
+        if location.isEmpty {
+            showAlert(withError: Constants.Error.noLocation)
+        } else if url.isEmpty {
+            showAlert(withError: Constants.Error.noWebsite)
+        } else if !UIApplication.shared.canOpenURL(URL(string: url)!) {
+            showAlert(withError: Constants.Error.invalidWebsite)
+        } else {
+            CLGeocoder().geocodeAddressString(location, completionHandler: { (placemarks, error) in
+                print(placemarks!)
+            })
+        }
+    }
+    
+    fileprivate func showAlert(withError error: String) {
+        let alert = UIAlertController(title: Constants.Error.title, message: error, preferredStyle: .alert)
+        let closeAction = UIAlertAction(title: Constants.Copy.close, style: .default, handler: nil)
+        alert.addAction(closeAction)
+        present(alert, animated: true, completion: nil)
     }
 }

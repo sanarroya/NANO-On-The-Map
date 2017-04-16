@@ -37,7 +37,15 @@ class ListViewController: UITableViewController, ActivityIndicator {
     }
     
     func logout() {
-        dismiss(animated: true, completion: nil)
+        dispatchOnBackground {
+            API().udacityLogout(success: { [weak self] in
+                guard let strongself = self else { return }
+                updateUI {
+                    strongself.dismiss(animated: true, completion: nil)
+                }
+            }) { error in
+            }
+        }
     }
     
     func refresh() {
@@ -65,18 +73,25 @@ class ListViewController: UITableViewController, ActivityIndicator {
     }
 
     fileprivate func fetchStudents() {
-        showIndicator()
-        dispatchOnBackground {
-            ParseAPI().getStudentsLocations(success: { [weak self] students in
-                updateUI {
-                    guard let strongself = self else { return }
-                    strongself.students = students
-                    strongself.tableView.reloadData()
-                    strongself.hideIndicator()
-                }
-            }, failure: { error in
-                    
-            })
+        if !StudentsInformation.sharedInstance.studentsFetched {
+            showIndicator()
+            dispatchOnBackground {
+                ParseAPI().getStudentsLocations(success: { [weak self] students in
+                    updateUI {
+                        guard let strongself = self else { return }
+                        StudentsInformation.sharedInstance.students = students
+                        strongself.students = students
+                        strongself.tableView.reloadData()
+                        strongself.hideIndicator()
+                    }
+                }, failure: { error in
+                        
+                })
+            }
+        } else {
+            students = StudentsInformation.sharedInstance.students
+            tableView.reloadData()
+            hideIndicator()
         }
     }
 

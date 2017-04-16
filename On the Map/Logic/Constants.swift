@@ -17,15 +17,25 @@ struct Constants {
         static let commonApiScheme = "http://"
         static let apiHost = "www.udacity.com/api"
         static let apiLoginPath = "/session"
+        static let apiUserDataPath = "/users/{userId}"
         static let signUpURL = "https://www.udacity.com/account/auth#!/signup"
         static let loginEndpoint = apiScheme + apiHost + apiLoginPath
+        static let userDataEndpoint = apiScheme + apiHost + apiUserDataPath
         
         struct Key {
             static let accept = "Accept"
             static let contentType = "Content-Type"
+            static let xxsrfToken = "X-XSRF-TOKEN"
+            static let xsrfToken = "XSRF-TOKEN"
             static let udacity = "udacity"
             static let username = "username"
             static let password = "password"
+            static let userIdPlaceHolder = "{userId}"
+            static let user = "user"
+            static let account = "account"
+            static let key = "key"
+            static let firstName = "first_name"
+            static let lastName = "last_name"
         }
         
         struct Value {
@@ -40,6 +50,17 @@ struct Constants {
         struct Key {
             static let parseApplicationId = "X-Parse-Application-Id"
             static let parseRestAPIKey = "X-Parse-REST-API-Key"
+            static let results = "results"
+            static let objectId = "objectId"
+            static let uniqueKey = "uniqueKey"
+            static let firstName = "firstName"
+            static let lastName = "lastName"
+            static let mapString = "mapString"
+            static let mediaURL = "mediaURL"
+            static let latitude = "latitude"
+            static let longitude = "longitude"
+            static let createdAt = "createdAt"
+            static let updatedAt = "updatedAt"
         }
         
         struct Value {
@@ -55,6 +76,9 @@ struct Constants {
         static let noData = "No data was returned by the request!"
         static let invalidEmail = "Please enter a valid email address."
         static let noPassword = "Please enter your password."
+        static let noLocation = "Must enter a location"
+        static let noWebsite = "Must enter a website"
+        static let invalidWebsite = "Invalid Link. Include http(s)://."
     }
     
     struct Font {
@@ -77,5 +101,6 @@ struct Constants {
         static let signUp = "Sign Up"
         static let cancel = "Cancel"
         static let findLocation = "FIND LOCATION"
+        static let finish = "FINISH"
     }
 }

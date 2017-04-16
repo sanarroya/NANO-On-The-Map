@@ -62,6 +62,7 @@ class ViewController: UIViewController, ActivityIndicator {
         updateLoginButtonState()
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
+        
         if !Validator.validateEmail(email) {
             updateLoginButtonState()
             showAlert(withError: Constants.Error.invalidEmail)
@@ -76,20 +77,20 @@ class ViewController: UIViewController, ActivityIndicator {
                  Constants.Udacity.Key.password: password]]
             
             dispatchOnBackground { [weak self] void in
-                guard let strongSelf = self else { return }
-                strongSelf.api.udacityLogin(parameters: parameters, success: { data in
-                    strongSelf.hideIndicator()
+                guard let strongself = self else { return }
+                strongself.api.udacityLogin(parameters: parameters, success: { data in
+                    strongself.hideIndicator()
                     updateUI {
-                        strongSelf.updateLoginButtonState()
-                        strongSelf.clearFields()
-                        strongSelf.performSegue(withIdentifier: Constants.SegueIds.mapViewSegue, sender: nil)
+                        strongself.updateLoginButtonState()
+                        strongself.clearFields()
+                        strongself.performSegue(withIdentifier: Constants.SegueIds.mapViewSegue, sender: nil)
                     }
                 }, failure: { error in
-                    guard let strongSelf = self else { return }
-                    strongSelf.hideIndicator()
+                    guard let strongself = self else { return }
+                    strongself.hideIndicator()
                     updateUI {
-                        strongSelf.updateLoginButtonState()
-                        strongSelf.showAlert(withError: error)
+                        strongself.updateLoginButtonState()
+                        strongself.showAlert(withError: error)
                     }
                 })
             }

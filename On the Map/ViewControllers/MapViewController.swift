@@ -37,7 +37,16 @@ class MapViewController: UIViewController, ActivityIndicator {
     }
     
     func logout() {
-        dismiss(animated: true, completion: nil)
+        dispatchOnBackground {
+            API().udacityLogout(success: { [weak self] in
+                guard let strongself = self else { return }
+                updateUI {
+                    strongself.dismiss(animated: true, completion: nil)
+                }
+            }) { error in
+                
+            }
+        }
     }
     
     func refresh() {
@@ -59,16 +68,22 @@ class MapViewController: UIViewController, ActivityIndicator {
     }
 
     fileprivate func fetchStudents() {
-        dispatchOnBackground {
-            ParseAPI().getStudentsLocations(success: { [weak self] students in
-                updateUI {
-                    guard let strongself = self else { return }
-                    strongself.annotations = strongself.configureAnnotations(withStudents: students)
-                    strongself.mapView.addAnnotations(strongself.annotations)
-                }
-                }, failure: { error in
-                    
-            })
+        if !StudentsInformation.sharedInstance.studentsFetched {
+            dispatchOnBackground {
+                ParseAPI().getStudentsLocations(success: { [weak self] students in
+                    updateUI {
+                        guard let strongself = self else { return }
+                        StudentsInformation.sharedInstance.students = students
+                        strongself.annotations = strongself.configureAnnotations(withStudents: students)
+                        strongself.mapView.addAnnotations(strongself.annotations)
+                    }
+                    }, failure: { error in
+                        
+                })
+            }
+        } else {
+            annotations = self.configureAnnotations(withStudents: StudentsInformation.sharedInstance.students)
+            mapView.addAnnotations(annotations)
         }
     }
 }

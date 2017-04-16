@@ -12,6 +12,8 @@
 		D21727F91E42C76800D1D036 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21727F81E42C76800D1D036 /* ListViewController.swift */; };
 		D241347F1EA219C200E73757 /* OnTheMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241347E1EA219C200E73757 /* OnTheMapTableViewCell.swift */; };
 		D24134811EA2969F00E73757 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24134801EA2969F00E73757 /* AddLocationViewController.swift */; };
+		D24134831EA2DD4000E73757 /* StudentsInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24134821EA2DD4000E73757 /* StudentsInformation.swift */; };
+		D24134851EA2F11300E73757 /* ConfirmLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24134841EA2F11300E73757 /* ConfirmLocationViewController.swift */; };
 		D25C3A2D1E1CAD1A00F02E71 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25C3A2C1E1CAD1A00F02E71 /* APIHelper.swift */; };
 		D25C3A2F1E1CB3E400F02E71 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25C3A2E1E1CB3E400F02E71 /* GCDBlackBox.swift */; };
 		D9F0D0721DA074DE004DF3BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0D0711DA074DE004DF3BE /* AppDelegate.swift */; };
@@ -32,11 +34,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D207A9481E80822F003E81AB /* StudentAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentAnnotation.swift; sourceTree = "<group>"; };
+		D207A9481E80822F003E81AB /* StudentAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentAnnotation.swift; path = ../Logic/StudentAnnotation.swift; sourceTree = "<group>"; };
 		D21727F61E42B64700D1D036 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D21727F81E42C76800D1D036 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		D241347E1EA219C200E73757 /* OnTheMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapTableViewCell.swift; sourceTree = "<group>"; };
 		D24134801EA2969F00E73757 /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		D24134821EA2DD4000E73757 /* StudentsInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsInformation.swift; sourceTree = "<group>"; };
+		D24134841EA2F11300E73757 /* ConfirmLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmLocationViewController.swift; sourceTree = "<group>"; };
 		D25C3A2C1E1CAD1A00F02E71 /* APIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		D25C3A2E1E1CB3E400F02E71 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		D9F0D06E1DA074DE004DF3BE /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,16 +92,16 @@
 		D9F0D0701DA074DE004DF3BE /* On the Map */ = {
 			isa = PBXGroup;
 			children = (
+				D9F0D0711DA074DE004DF3BE /* AppDelegate.swift */,
 				D9F0D09C1DA1AA23004DF3BE /* Appearance */,
-				D9F0D0991DA1A9B2004DF3BE /* ViewControllers */,
-				D9F0D0901DA1848E004DF3BE /* Supporting Files */,
+				D9F0D07D1DA074DE004DF3BE /* Info.plist */,
+				D9F0D07A1DA074DE004DF3BE /* LaunchScreen.storyboard */,
 				D9F0D08B1DA08320004DF3BE /* Logic */,
+				D9F0D0751DA074DE004DF3BE /* Main.storyboard */,
 				D9F0D0881DA0767A004DF3BE /* Model */,
 				D9F0D0831DA0757D004DF3BE /* Networking */,
-				D9F0D0711DA074DE004DF3BE /* AppDelegate.swift */,
-				D9F0D0751DA074DE004DF3BE /* Main.storyboard */,
-				D9F0D07A1DA074DE004DF3BE /* LaunchScreen.storyboard */,
-				D9F0D07D1DA074DE004DF3BE /* Info.plist */,
+				D9F0D0901DA1848E004DF3BE /* Supporting Files */,
+				D9F0D0991DA1A9B2004DF3BE /* ViewControllers */,
 			);
 			path = "On the Map";
 			sourceTree = "<group>";
@@ -115,7 +119,9 @@
 		D9F0D0881DA0767A004DF3BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D207A9481E80822F003E81AB /* StudentAnnotation.swift */,
 				D9F0D0891DA07686004DF3BE /* StudentInformation.swift */,
+				D24134821EA2DD4000E73757 /* StudentsInformation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -127,7 +133,6 @@
 				D9F0D08E1DA086C6004DF3BE /* ActivityIndicatorProtocol.swift */,
 				D9F0D09F1DA1C7AC004DF3BE /* Validator.swift */,
 				D25C3A2E1E1CB3E400F02E71 /* GCDBlackBox.swift */,
-				D207A9481E80822F003E81AB /* StudentAnnotation.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 				D21727F61E42B64700D1D036 /* MapViewController.swift */,
 				D21727F81E42C76800D1D036 /* ListViewController.swift */,
 				D24134801EA2969F00E73757 /* AddLocationViewController.swift */,
+				D24134841EA2F11300E73757 /* ConfirmLocationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -260,7 +266,9 @@
 				D24134811EA2969F00E73757 /* AddLocationViewController.swift in Sources */,
 				D9F0D08D1DA08330004DF3BE /* Constants.swift in Sources */,
 				D9F0D08F1DA086C6004DF3BE /* ActivityIndicatorProtocol.swift in Sources */,
+				D24134851EA2F11300E73757 /* ConfirmLocationViewController.swift in Sources */,
 				D21727F91E42C76800D1D036 /* ListViewController.swift in Sources */,
+				D24134831EA2DD4000E73757 /* StudentsInformation.swift in Sources */,
 				D9F0D09E1DA1AA72004DF3BE /* AppAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -325,11 +325,58 @@
                         <outlet property="findLocationButton" destination="MEs-Z1-ptq" id="RtQ-Zo-uOH"/>
                         <outlet property="locationTextField" destination="yc2-7e-J2c" id="Ty5-xk-fpl"/>
                         <outlet property="websiteTextField" destination="dSX-1s-5dt" id="h0V-5w-KZ0"/>
+                        <segue destination="oGq-Yt-ng3" kind="show" id="X2A-te-ycG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xv8-db-vRV" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4385" y="92"/>
+        </scene>
+        <!--On The Map-->
+        <scene sceneID="B7u-gg-HCZ">
+            <objects>
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="oGq-Yt-ng3" customClass="ConfirmLocationViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q0e-pU-3L2"/>
+                        <viewControllerLayoutGuide type="bottom" id="69c-Ps-22Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XUP-dX-EyN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="uiy-xS-fVN">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C13-Bn-7UT">
+                                <rect key="frame" x="48" y="607" width="279" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="279" id="0m3-vX-gvo"/>
+                                    <constraint firstAttribute="height" constant="40" id="neO-zG-oKQ"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.0078431372550000003" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="C13-Bn-7UT" firstAttribute="centerX" secondItem="XUP-dX-EyN" secondAttribute="centerX" id="5GJ-ms-BCb"/>
+                            <constraint firstAttribute="trailing" secondItem="uiy-xS-fVN" secondAttribute="trailing" id="7g7-DE-xL0"/>
+                            <constraint firstItem="uiy-xS-fVN" firstAttribute="top" secondItem="Q0e-pU-3L2" secondAttribute="bottom" id="L3M-kw-mlW"/>
+                            <constraint firstItem="69c-Ps-22Z" firstAttribute="top" secondItem="C13-Bn-7UT" secondAttribute="bottom" constant="20" id="XeV-Yt-c1W"/>
+                            <constraint firstItem="69c-Ps-22Z" firstAttribute="top" secondItem="uiy-xS-fVN" secondAttribute="bottom" id="qOI-xi-99j"/>
+                            <constraint firstItem="uiy-xS-fVN" firstAttribute="leading" secondItem="XUP-dX-EyN" secondAttribute="leading" id="uu3-sw-giE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="On The Map" id="O8E-1E-a2i"/>
+                    <connections>
+                        <outlet property="finishButton" destination="C13-Bn-7UT" id="UBR-fz-j0u"/>
+                        <outlet property="mapView" destination="uiy-xS-fVN" id="I24-ZW-fLD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WYq-E5-YmU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5182" y="92"/>
         </scene>
     </scenes>
     <resources>

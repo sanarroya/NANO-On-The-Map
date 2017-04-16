@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias ResponseDictionary = [String: Any]
+
 enum HTTPMethod: String {
     case GET
     case POST
@@ -16,18 +18,20 @@ enum HTTPMethod: String {
 }
 
 protocol APIHelperProtocol {
+    typealias SuccessEmptyBlock = () -> ()
+    typealias ErrorBlock = (String) -> ()
     var sharedSession: URLSession {get}
-    func dictionaryToJSON(params: [String: Any]) -> Data
-    func requestAPI(withURLRequest url: URLRequest, success: @escaping (Data) -> (), failure: @escaping (_ failure: String) -> ())
+    func dictionaryToJSON(params: ResponseDictionary) -> Data
+    func requestAPI(withURLRequest url: URLRequest, success: @escaping (Data) -> (), failure: @escaping ErrorBlock)
 }
 
 extension APIHelperProtocol {
-    func dictionaryToJSON(params: [String: Any]) -> Data {
+    func dictionaryToJSON(params: ResponseDictionary) -> Data {
         let jsonData = try! JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
         return jsonData
     }
     
-    func requestAPI(withURLRequest url: URLRequest, success: @escaping (Data) -> (), failure: @escaping (_ failure: String) -> ()) {
+    func requestAPI(withURLRequest url: URLRequest, success: @escaping (Data) -> (), failure: @escaping ErrorBlock) {
         sharedSession.dataTask(with: url) { (data, response, error) in
             
             guard error == nil else {
@@ -50,7 +54,7 @@ extension APIHelperProtocol {
             }
             
             if !url.isParseRequest {
-                let newData = data.subdata(in: Range(uncheckedBounds: (lower: 5, upper: data.count - 5)))
+                let newData = data.subdata(in: Range(5..<data.count))
                 success(newData)
             }else {
                 success(data)

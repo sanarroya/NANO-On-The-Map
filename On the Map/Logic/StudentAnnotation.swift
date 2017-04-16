@@ -6,7 +6,6 @@
 //  Copyright © 2017 Santiago Avila Arroyave. All rights reserved.
 //
 
-import UIKit
 import MapKit
 
 class StudentAnnotation: NSObject, MKAnnotation {

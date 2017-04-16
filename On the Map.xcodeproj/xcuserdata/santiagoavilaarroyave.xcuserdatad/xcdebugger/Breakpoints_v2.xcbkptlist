@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "On the Map/ViewControllers/OTMNavigationViewController.swift"
-            timestampString = "507858335.46234"
+            filePath = "On the Map/ViewControllers/AddLocationViewController.swift"
+            timestampString = "513994046.496041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "findLocation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
